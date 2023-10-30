@@ -1,23 +1,29 @@
 using Godot;
 using System;
+using System.Dynamic;
 
+[Tool]
 public partial class Tile : Node3D
 {
 	private Node3D node;
-	private int RotationPosition
-  	{
-		get { return RotationPosition; }   
-		set
-		{ 
-			this.RotationPosition = 4*value%4;
-		}  
-  	}
-    private int rotationPosition; 
-
-    public Tile()
-    {
-        this.rotationPosition = 0;
-    }
+	private int rotationPosition; 
+	[Export]
+	private PackedScene[] up = new PackedScene[0];
+	[Export]
+	private PackedScene[] left = new PackedScene[0];
+	[Export]
+	private PackedScene[] right = new PackedScene[0];
+	[Export]
+	private PackedScene[] down = new PackedScene[0];
+	
+	public PackedScene[] GetUp()
+	{
+		return up;
+	}
+	public Tile()
+	{
+		this.rotationPosition = 0;
+	}
 
 	private Random rand = new Random();
 	[Export]
@@ -28,18 +34,20 @@ public partial class Tile : Node3D
 		AddChild(node);
 		this.node = node;
 	}
-	// public void RotateLeft()
-	// {
-    //     RotationPosition = RotationPosition - 1;
-    //     float rad = (float)((RotationPosition * 90 / (180 / Math.PI)));
-    //     this.node.RotateY(rad);
-	// }
-	// public void RotateRight()
-	// {
-    //     RotationPosition = RotationPosition + 1;
-    //     float rad = (float)((RotationPosition * 90 / (180 / Math.PI)));
-    //     this.node.RotateY(rad);
-	// }
+	public void RotateLeft(int times = 1)
+	{
+		this.rotationPosition =((this.rotationPosition+times)%4);
+		GD.Print((this.rotationPosition+times)%4);
+		float rad = (float)((this.rotationPosition  * 90) / (180 / Math.PI));
+		this.node.RotateY(rad);
+	}
+	public void RotateRight(int times = 1)
+	{
+		this.rotationPosition =((this.rotationPosition+times)%4);
+		GD.Print((this.rotationPosition+times)%4);
+		float rad = (float)((this.rotationPosition  * 90) / (180 / Math.PI));
+		this.node.RotateY(rad);
+	}
 	public override void _Ready()
 	{
 		this.Render();

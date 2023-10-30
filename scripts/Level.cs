@@ -1,6 +1,8 @@
 using System;
 using Godot;
 
+
+[Tool]
 public partial class Level : Node3D
 {
 	private Random rand = new Random();
@@ -20,6 +22,8 @@ public partial class Level : Node3D
 			Tile node  = (Tile)tiles[rand.Next(0, tiles.Length)].Instantiate();
 			node.Position = new Vector3(1+w*2,0,1+h*2);
 			AddChild(node);
+			node.RotateLeft(rand.Next(0,5));
+			
 			level[w,h] = node;
 		}}
 	}

@@ -1,51 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://cd77p6vwwkl5d"]
+[gd_scene load_steps=8 format=3 uid="uid://cthewcdknkaqx"]
 
 [ext_resource type="PackedScene" uid="uid://qca7ig03xws5" path="res://assets/city-bundle/gltf/base.gltf" id="1_6x3bn"]
+[ext_resource type="Script" path="res://scripts/Tile.cs" id="1_hjt5a"]
 [ext_resource type="PackedScene" uid="uid://wwcnorek3534" path="res://assets/city-bundle/gltf/building_D_withoutBase.gltf" id="2_hx7vd"]
 [ext_resource type="PackedScene" uid="uid://cqo82fqulqa46" path="res://assets/city-bundle/gltf/bush.gltf" id="3_k74hr"]
 [ext_resource type="PackedScene" uid="uid://kygnogq3hgmy" path="res://assets/city-bundle/gltf/box_B.gltf" id="4_5166f"]
 [ext_resource type="Script" path="res://scripts/details.cs" id="4_te5bx"]
 [ext_resource type="PackedScene" uid="uid://do3ghsa71jv4a" path="res://assets/city-bundle/gltf/trash_B.gltf" id="5_s2ila"]
 
-[sub_resource type="CSharpScript" id="CSharpScript_tupc5"]
-script/source = "using Godot;
-using System;
-using System.Dynamic;
-using System.Runtime.CompilerServices;
-
-namespace Tile
-
-{
-	public partial class Tile : Node3D
-{
-	[Export]
-	private PackedScene scene;
-	private Node parent;
-
-	public Tile( Node3D parent)
-	{
-		this.parent = parent;
-	}
-	public void Place(Vector3 position)
-	{
-		Node3D tmp  = (Node3D)this.scene.Instantiate();
-		AddChild(tmp);
-		tmp.Position = position;
-	}
-	public PackedScene GetAsset()
-	{
-		return this.scene;
-	} 
-}
-	
-}
-
-
-
-"
-
 [node name="Building" type="Node3D"]
-script = SubResource("CSharpScript_tupc5")
+script = ExtResource("1_hjt5a")
 
 [node name="base" parent="." instance=ExtResource("1_6x3bn")]
 
