@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbu218khxgvww"]
+
+[ext_resource type="PackedScene" uid="uid://qca7ig03xws5" path="res://assets/city-bundle/gltf/base.gltf" id="1_ka3a1"]
+[ext_resource type="Script" path="res://scripts/Tile.cs" id="1_po112"]
+[ext_resource type="PackedScene" uid="uid://conrqg8anpid0" path="res://assets/city-bundle/gltf/road_junction.gltf" id="2_x7cwr"]
+
+[node name="Tile" type="Node3D"]
+script = ExtResource("1_po112")
+variants = [ExtResource("2_x7cwr"), ExtResource("1_ka3a1")]

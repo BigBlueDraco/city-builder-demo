@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://ukui75gmbr3d"]
+
+[ext_resource type="Script" path="res://scripts/Level.cs" id="1_enxhn"]
+[ext_resource type="PackedScene" uid="uid://cbu218khxgvww" path="res://scenes/tile.tscn" id="2_nh3g6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rfgvf"]
+sky_top_color = Color(0.521569, 0.592157, 0.690196, 1)
+
+[sub_resource type="Sky" id="Sky_eihsl"]
+sky_material = SubResource("ProceduralSkyMaterial_rfgvf")
+
+[sub_resource type="Environment" id="Environment_yskkn"]
+background_mode = 2
+sky = SubResource("Sky_eihsl")
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_enxhn")
+tiles = [ExtResource("2_nh3g6")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 5, 30, 11.45)
+projection = 1
+size = 7.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_yskkn")

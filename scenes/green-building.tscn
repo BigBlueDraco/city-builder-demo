@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://cd77p6vwwkl5d"]
+
+[ext_resource type="PackedScene" uid="uid://qca7ig03xws5" path="res://assets/city-bundle/gltf/base.gltf" id="1_6x3bn"]
+[ext_resource type="PackedScene" uid="uid://wwcnorek3534" path="res://assets/city-bundle/gltf/building_D_withoutBase.gltf" id="2_hx7vd"]
+[ext_resource type="PackedScene" uid="uid://cqo82fqulqa46" path="res://assets/city-bundle/gltf/bush.gltf" id="3_k74hr"]
+[ext_resource type="PackedScene" uid="uid://kygnogq3hgmy" path="res://assets/city-bundle/gltf/box_B.gltf" id="4_5166f"]
+[ext_resource type="Script" path="res://scripts/details.cs" id="4_te5bx"]
+[ext_resource type="PackedScene" uid="uid://do3ghsa71jv4a" path="res://assets/city-bundle/gltf/trash_B.gltf" id="5_s2ila"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_tupc5"]
+script/source = "using Godot;
+using System;
+using System.Dynamic;
+using System.Runtime.CompilerServices;
+
+namespace Tile
+
+{
+	public partial class Tile : Node3D
+{
+	[Export]
+	private PackedScene scene;
+	private Node parent;
+
+	public Tile( Node3D parent)
+	{
+		this.parent = parent;
+	}
+	public void Place(Vector3 position)
+	{
+		Node3D tmp  = (Node3D)this.scene.Instantiate();
+		AddChild(tmp);
+		tmp.Position = position;
+	}
+	public PackedScene GetAsset()
+	{
+		return this.scene;
+	} 
+}
+	
+}
+
+
+
+"
+
+[node name="Building" type="Node3D"]
+script = SubResource("CSharpScript_tupc5")
+
+[node name="base" parent="." instance=ExtResource("1_6x3bn")]
+
+[node name="building_D_withoutBase" parent="." instance=ExtResource("2_hx7vd")]
+transform = Transform3D(0.999972, 0, -0.00748739, 0, 1, 0, 0.00748739, 0, 0.999972, 0, 0, 0)
+
+[node name="details" type="Node3D" parent="." node_paths=PackedStringArray("obj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22701, -0.288113, -0.545102)
+script = ExtResource("4_te5bx")
+obj = [NodePath("box_B"), NodePath("trash_B"), NodePath("bush")]
+
+[node name="box_B" parent="details" instance=ExtResource("4_5166f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.317614, 0.381223, 0.187582)
+
+[node name="trash_B" parent="details" instance=ExtResource("5_s2ila")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11038, 0.388152, 1.30542)
+
+[node name="bush" parent="details" instance=ExtResource("3_k74hr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.470644, 0.358216, 1.24907)
+
+[node name="Node3D" type="Node3D" parent="."]
