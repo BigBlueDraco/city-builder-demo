@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbu218khxgvww"]
+[gd_scene load_steps=4 format=3 uid="uid://cbu218khxgvww"]
 
 [ext_resource type="PackedScene" uid="uid://qca7ig03xws5" path="res://assets/city-bundle/gltf/base.gltf" id="1_ka3a1"]
 [ext_resource type="Script" path="res://scripts/Tile.cs" id="1_po112"]
-[ext_resource type="PackedScene" uid="uid://cthewcdknkaqx" path="res://scenes/green-building.tscn" id="2_5jt2d"]
-[ext_resource type="PackedScene" uid="uid://conrqg8anpid0" path="res://assets/city-bundle/gltf/road_junction.gltf" id="2_x7cwr"]
-[ext_resource type="PackedScene" uid="uid://yf1py76tb5g" path="res://assets/city-bundle/gltf/road_straight.gltf" id="4_sc5ve"]
+[ext_resource type="PackedScene" uid="uid://bwx2u2kbmf5f6" path="res://scenes/Road.tscn" id="3_rbtgx"]
 
 [node name="Tile" type="Node3D"]
 script = ExtResource("1_po112")
-up = [ExtResource("2_5jt2d")]
-variants = [ExtResource("2_x7cwr"), ExtResource("1_ka3a1"), ExtResource("4_sc5ve")]
+up = [null]
+left = [null, ExtResource("3_rbtgx")]
+right = [null]
+down = [null]
+variants = [ExtResource("1_ka3a1")]

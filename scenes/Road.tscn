@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwx2u2kbmf5f6"]
+
+[ext_resource type="Script" path="res://scripts/Tile.cs" id="1_q4k22"]
+[ext_resource type="PackedScene" uid="uid://cbu218khxgvww" path="res://scenes/tile.tscn" id="1_qnusk"]
+[ext_resource type="PackedScene" uid="uid://yf1py76tb5g" path="res://assets/city-bundle/gltf/road_straight.gltf" id="2_blfp0"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_q4k22")
+up = [null]
+left = [ExtResource("1_qnusk")]
+right = [ExtResource("1_qnusk")]
+down = [null]
+variants = [ExtResource("2_blfp0")]

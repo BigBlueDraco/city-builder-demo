@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ukui75gmbr3d"]
+[gd_scene load_steps=7 format=3 uid="uid://ukui75gmbr3d"]
 
 [ext_resource type="Script" path="res://scripts/Level.cs" id="1_enxhn"]
 [ext_resource type="PackedScene" uid="uid://cbu218khxgvww" path="res://scenes/tile.tscn" id="2_nh3g6"]
+[ext_resource type="PackedScene" uid="uid://bwx2u2kbmf5f6" path="res://scenes/Road.tscn" id="3_qqkq6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rfgvf"]
 sky_top_color = Color(0.521569, 0.592157, 0.690196, 1)
@@ -15,6 +16,8 @@ sky = SubResource("Sky_eihsl")
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_enxhn")
+width = 2
+height = 2
 tiles = [ExtResource("2_nh3g6")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -24,3 +27,9 @@ size = 7.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_yskkn")
+
+[node name="Tile2" parent="." instance=ExtResource("2_nh3g6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.91006, 0, 0)
+
+[node name="Node3D" parent="." instance=ExtResource("3_qqkq6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53609, 0, 0)
